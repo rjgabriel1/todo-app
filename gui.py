@@ -6,9 +6,9 @@ sg.theme('BlueMono')
 clock = sg.Text('', key='clock')
 label = sg.Text("Enter Todo")
 input_box = sg.InputText(key='todo', tooltip="Enter Todo")
-btn_add = sg.Button("Add", size=5)
+btn_add = sg.Button(image_source='add.png', size=2, tooltip='add', key='add')
 btn_edit = sg.Button("Edit", size=5)
-btn_complete = sg.Button("Complete", size=8)
+btn_complete = sg.Button(image_source='complete.png', size=2, tooltip='complete', key='complete')
 btn_exit = sg.Button("Exit", size=5)
 list_box = sg.Listbox(values=functions.get_todos(), key="items",
                       enable_events=True, size=(45, 10))
@@ -26,7 +26,7 @@ while True:
     window['clock'].update(value=time.strftime('%b %d, %Y %H:%M:%S'))
 
     match event:
-        case "Add":
+        case "add":
             todos = functions.get_todos()
             new_todo = values['todo'] + "\n"
             todos.append(new_todo)
@@ -49,7 +49,7 @@ while True:
         case 'items':
             window['todo'].update(value=values['items'][0])
 
-        case "Complete":
+        case "complete":
             try:
                 completed_todo = values['items'][0]
                 todos = functions.get_todos()
